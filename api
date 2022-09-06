@@ -1,0 +1,17 @@
+import dart_fss as dart
+import os
+
+
+api_key = '6ae79a96c9ff7b3686ecb5aaa8773cfdc7fa0701'
+dart.set_api_key(api_key=api_key)
+
+corp_list = dart.get_corp_list()
+
+company = corp_list.find_by_corp_name('케이씨씨글라스', exactly=True)[0]
+#code = '344820'
+
+fs= company.extract_fs(bgn_de='20200101')
+fs.save()
+
+print(os.getcwd())
+print(os.path.dirname(os.path.realpath(__file__)) )
